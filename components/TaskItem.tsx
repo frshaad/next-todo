@@ -3,16 +3,32 @@ import useStore from '@/store'
 const TaskItem = ({ id, isTaskDone, title }: Task) => {
   const { deleteTask, toggleTaskDone } = useStore()
 
+  const toggleExpandedTaskCard = () => {}
+
   return (
     <div
-      key={id}
-      onClick={() => toggleTaskDone(id)}
-      className='cursor-pointer p-4 rounded-md border shadow-sm hover:shadow-md hover:scale-[1.01] transition'
+      className={`flex cursor-pointer items-center gap-3 rounded-md border p-4 shadow-sm transition hover:shadow-md ${
+        isTaskDone ? 'opacity-60' : ''
+      }`}
+      onClick={toggleExpandedTaskCard}
     >
-      <p>
-        {title}...{isTaskDone ? 'Done' : 'Not Yet!'}
-      </p>
-      <button onClick={() => deleteTask(id)}>DELETE</button>
+      <input
+        type='checkbox'
+        checked={isTaskDone}
+        className='checkbox'
+        onClick={() => toggleTaskDone(id)}
+        readOnly
+        title={isTaskDone ? 'Uncheck the task' : 'Check the task'}
+      />
+
+      <div>
+        <h3
+          className={`select-none text-lg ${isTaskDone ? 'line-through' : ''}`}
+        >
+          {title}
+        </h3>
+      </div>
+      <div></div>
     </div>
   )
 }
