@@ -1,10 +1,10 @@
-import useStore from '@/store'
-import TaskItem from './TaskItem'
-import { MdDoneAll } from 'react-icons/md'
+import useStore from '@/store';
+import TaskItem from './TaskItem';
+import { MdDoneAll } from 'react-icons/md';
 
 const UndoneTasksList = () => {
-  const { tasks, checkTasksDone } = useStore()
-  const undoneTasksCount = tasks.filter(task => !task.isTaskDone).length
+  const { tasks, checkTasksDone } = useStore();
+  const undoneTasksCount = tasks.filter(task => !task.isTaskDone).length;
 
   return (
     <section className='flex flex-col gap-2'>
@@ -27,14 +27,14 @@ const UndoneTasksList = () => {
           <div className='flex flex-col gap-2'>
             {tasks.map(task => {
               if (!task.isTaskDone) {
-                return <TaskItem key={task.id} {...task} />
+                return <TaskItem key={task.id} {...task} />;
               }
             })}
           </div>
         </article>
       )}
     </section>
-  )
-}
+  );
+};
 
-export default UndoneTasksList
+export default UndoneTasksList;

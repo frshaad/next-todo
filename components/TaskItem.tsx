@@ -1,9 +1,9 @@
-import useStore from '@/store'
+import useStore from '@/store';
 
 const TaskItem = ({ id, isTaskDone, title }: Task) => {
-  const { deleteTask, toggleTaskDone } = useStore()
+  const { deleteTask, toggleTaskDone } = useStore();
 
-  const toggleExpandedTaskCard = () => {}
+  const toggleExpandedTaskCard = () => {};
 
   return (
     <div
@@ -30,7 +30,7 @@ const TaskItem = ({ id, isTaskDone, title }: Task) => {
       </div>
       <div></div>
     </div>
-  )
-}
+  );
+};
 
-export default TaskItem
+export default TaskItem;

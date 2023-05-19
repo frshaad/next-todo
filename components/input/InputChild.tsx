@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
-import { BsPlus } from 'react-icons/bs'
+import { useEffect, useRef, useState } from 'react';
+import { BsPlus } from 'react-icons/bs';
 
-import useStore from '@/store'
+import useStore from '@/store';
 
 const InputChild = () => {
-  const [taskTitle, setTaskTitle] = useState('')
-  const addTaskInput = useRef<HTMLInputElement | null>(null)
-  const { addTask } = useStore()
+  const [taskTitle, setTaskTitle] = useState('');
+  const addTaskInput = useRef<HTMLInputElement | null>(null);
+  const { addTask } = useStore();
 
   useEffect(() => {
-    addTaskInput.current?.focus()
-  }, [])
+    addTaskInput.current?.focus();
+  }, []);
 
   // TODO: listen to keydown to focus on `addTaskInput`
 
@@ -24,11 +24,11 @@ const InputChild = () => {
         onChange={e => setTaskTitle(e.target.value)}
         onKeyDown={e => {
           if (e.key === 'Enter') {
-            addTask(taskTitle)
-            setTaskTitle('')
+            addTask(taskTitle);
+            setTaskTitle('');
           } else if (e.key === 'Escape') {
             if (document.activeElement === addTaskInput.current) {
-              addTaskInput.current?.blur()
+              addTaskInput.current?.blur();
             }
           }
         }}
@@ -42,7 +42,7 @@ const InputChild = () => {
         <BsPlus size={32} />
       </button>
     </>
-  )
-}
+  );
+};
 
-export default InputChild
+export default InputChild;

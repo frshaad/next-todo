@@ -1,4 +1,4 @@
-type Props = {}
+type Props = {};
 const Navbar = (props: Props) => {
   return (
     <nav>
@@ -10,6 +10,6 @@ const Navbar = (props: Props) => {
         </div>
       </section>
     </nav>
-  )
-}
-export default Navbar
+  );
+};
+export default Navbar;
