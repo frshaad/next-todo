@@ -42,7 +42,12 @@ const OngoingTasksList = () => {
           </div>
           <div className='flex flex-col gap-2'>
             {tasks.map(task => {
-              if (!task.isTaskDone) {
+              if (!task.isTaskDone && task.isImportant) {
+                return <TaskItem key={task.id} {...task} />;
+              }
+            })}
+            {tasks.map(task => {
+              if (!task.isTaskDone && !task.isImportant) {
                 return <TaskItem key={task.id} {...task} />;
               }
             })}
