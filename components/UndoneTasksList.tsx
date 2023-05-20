@@ -9,17 +9,20 @@ const UndoneTasksList = () => {
   return (
     <section className='flex flex-col gap-2'>
       {undoneTasksCount === 0 && (
-        <h2 className='mt-8 animate-fade-down text-center text-lg font-medium capitalize animate-normal animate-duration-200 animate-fill-both animate-once animate-ease-out'>
+        <h2 className='mt-8 animate-fade-down text-center text-lg font-medium capitalize animate-normal animate-duration-200 animate-fill-both animate-once animate-ease-out dark:text-white'>
           😎 There is nohting to do!
         </h2>
       )}
       {undoneTasksCount !== 0 && (
         <article className='flex flex-col gap-2'>
           <div className='mb-1 flex items-center justify-between px-2'>
-            <h2 className='text-lg font-medium'>Ongoing Tasks</h2>
+            <h2 className='text-lg font-medium dark:text-white'>
+              Ongoing Tasks
+            </h2>
             <button
               title='Clear Completed Tasks'
               onClick={() => checkTasksDone()}
+              className='dark:text-white'
             >
               <MdDoneAll size={24} />
             </button>
