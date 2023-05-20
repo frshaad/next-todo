@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { BsPlus } from 'react-icons/bs';
 
-import useStore from '@/store';
+import useTasks from '@/hooks/useTasks';
 
 const InputChild = () => {
   const [taskTitle, setTaskTitle] = useState('');
   const addTaskInput = useRef<HTMLInputElement | null>(null);
-  const { addTask } = useStore();
+  const { addTask } = useTasks();
 
   useEffect(() => {
     addTaskInput.current?.focus();

@@ -10,7 +10,7 @@ type TaskState = {
   checkTasksDone: () => void;
 };
 
-const useStore = create<TaskState>(set => ({
+const useTasks = create<TaskState>(set => ({
   tasks: [
     { id: uuidv4(), title: 'Task num 1', isTaskDone: false },
     { id: uuidv4(), title: 'Task num 2', isTaskDone: true },
@@ -51,4 +51,4 @@ const useStore = create<TaskState>(set => ({
     })),
 }));
 
-export default useStore;
+export default useTasks;

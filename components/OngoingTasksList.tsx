@@ -1,13 +1,26 @@
-import useStore from '@/store';
-import TaskItem from './TaskItem';
+import { useState } from 'react';
 import { MdDoneAll } from 'react-icons/md';
 
-const UndoneTasksList = () => {
-  const { tasks, checkTasksDone } = useStore();
+import useTasks from '@/hooks/useTasks';
+import TaskItem from './TaskItem';
+import Modal from './Modal';
+
+const OngoingTasksList = () => {
+  const { tasks, checkTasksDone } = useTasks();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const undoneTasksCount = tasks.filter(task => !task.isTaskDone).length;
+
+  const modalMessage = 'Mark each task as completed?';
 
   return (
     <section className='flex flex-col gap-2'>
+      {isModalOpen && (
+        <Modal
+          message={modalMessage}
+          confirmFn={checkTasksDone}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
       {undoneTasksCount === 0 && (
         <h2 className='mt-8 animate-fade-down text-center text-lg font-medium capitalize animate-normal animate-duration-200 animate-fill-both animate-once animate-ease-out dark:text-white'>
           😎 There is nohting to do!
@@ -21,7 +34,7 @@ const UndoneTasksList = () => {
             </h2>
             <button
               title='Clear Completed Tasks'
-              onClick={() => checkTasksDone()}
+              onClick={() => setIsModalOpen(true)}
               className='dark:text-white'
             >
               <MdDoneAll size={24} />
@@ -40,4 +53,4 @@ const UndoneTasksList = () => {
   );
 };
 
-export default UndoneTasksList;
+export default OngoingTasksList;

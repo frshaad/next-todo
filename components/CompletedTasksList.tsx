@@ -1,18 +1,30 @@
+import { useState } from 'react';
 import { MdClearAll } from 'react-icons/md';
 
-import useStore from '@/store';
 import TaskItem from './TaskItem';
+import useTasks from '@/hooks/useTasks';
+import Modal from './Modal';
 
 const CompletedTasksList = () => {
-  const { tasks, clearCompeletedTasks } = useStore();
+  const { tasks, clearCompeletedTasks } = useTasks();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const modalMessage = 'Clear all completed tasks?';
 
   return (
     <section className='flex flex-col gap-2'>
+      {isModalOpen && (
+        <Modal
+          message={modalMessage}
+          confirmFn={clearCompeletedTasks}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
       <div className='mb-1 flex items-center justify-between px-2 '>
         <h2 className='text-lg font-medium'>Completed Tasks</h2>
         <div className='flex items-center'>
           <button
-            onClick={() => clearCompeletedTasks()}
+            onClick={() => setIsModalOpen(true)}
             title='Clear Completed Tasks'
           >
             <MdClearAll size={24} />

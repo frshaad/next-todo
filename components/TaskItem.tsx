@@ -1,7 +1,7 @@
-import useStore from '@/store';
+import useTasks from '@/hooks/useTasks';
 
 const TaskItem = ({ id, isTaskDone, title }: Task) => {
-  const { deleteTask, toggleTaskDone } = useStore();
+  const { toggleTaskDone } = useTasks();
 
   const toggleExpandedTaskCard = () => {};
 
