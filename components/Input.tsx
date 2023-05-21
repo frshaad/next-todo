@@ -3,13 +3,22 @@ import { MdAddLink } from 'react-icons/md';
 import { BsFillTagFill, BsPlus } from 'react-icons/bs';
 
 type Props = {
+  taskId: string;
   title: string;
   placeholder: string;
-  callbackFn: (arg: string) => void;
-  type?: 'task' | 'tags' | 'link';
+  callbackFn?: (id: string) => void;
+  callbackFnStep?: (id: string, payload: string) => void;
+  type?: 'task' | 'tags' | 'link' | 'step';
 };
 
-const Input = ({ callbackFn, placeholder, title, type }: Props) => {
+const Input = ({
+  callbackFn,
+  placeholder,
+  title,
+  type,
+  taskId,
+  callbackFnStep,
+}: Props) => {
   const [value, setValue] = useState('');
   let Icon;
   switch (type) {
@@ -35,15 +44,26 @@ const Input = ({ callbackFn, placeholder, title, type }: Props) => {
         onChange={e => setValue(e.target.value)}
         onKeyDown={e => {
           if (e.key === 'Enter') {
-            callbackFn(value);
-            setValue('');
+            if (type !== 'step' && callbackFn) {
+              callbackFn(value);
+              setValue('');
+            } else if (type === 'step' && callbackFnStep) {
+              callbackFnStep(taskId, value);
+              setValue('');
+            }
           }
         }}
         placeholder={placeholder}
       />
       <button
         className='absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-1 font-semibold text-slate-700 transition hover:bg-slate-100 dark:text-white'
-        onClick={() => callbackFn(value)}
+        onClick={() => {
+          if (type !== 'step' && callbackFn) {
+            callbackFn(value);
+          } else if (type === 'step' && callbackFnStep) {
+            callbackFnStep(taskId, value);
+          }
+        }}
         title={title}
       >
         {Icon}

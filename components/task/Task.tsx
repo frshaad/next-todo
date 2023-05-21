@@ -4,7 +4,7 @@ import { BsStar, BsStarFill, BsTrash3 } from 'react-icons/bs';
 import useTasks from '@/hooks/useTasks';
 
 type Props = {
-  task: Step;
+  task: Task;
   setIsModalOpen: (arg: boolean) => void;
   type: 'task' | 'step';
 };

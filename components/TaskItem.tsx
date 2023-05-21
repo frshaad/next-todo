@@ -7,7 +7,7 @@ import LinkShow from './task/LinkShow';
 import Input from './Input';
 
 const TaskItem = (task: Task) => {
-  const { deleteTask, toggleExpandCard } = useTasks();
+  const { deleteTask, toggleExpandCard, addStep } = useTasks();
   const { id, isTaskDone, steps, isCardExpanded, link } = task;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -36,32 +36,44 @@ const TaskItem = (task: Task) => {
         <Task type='task' setIsModalOpen={setIsModalOpen} task={task} />
       </div>
       {isCardExpanded && (
-        <div className='mt-3 flex flex-col gap-7'>
+        <div className='mt-3 flex flex-col gap-10'>
           {/* steps */}
-          {steps && (
-            <div className='flex flex-col gap-3'>
-              <h4 className='font-medium'>Steps</h4>
-              <div className='flex flex-col gap-1 pl-6'>
-                {steps.map(step => (
-                  <Task
-                    key={step.id}
-                    setIsModalOpen={setIsModalOpen}
-                    type='step'
-                    task={step}
-                  />
-                ))}
+          <div className='flex flex-col gap-4'>
+            {steps && (
+              <div className='flex flex-col gap-3'>
+                <h4 className='font-medium'>Steps</h4>
+                <div className='flex flex-col gap-1 pl-6'>
+                  {steps.map(step => (
+                    <Task
+                      key={step.id}
+                      setIsModalOpen={setIsModalOpen}
+                      type='step'
+                      task={step}
+                    />
+                  ))}
+                </div>
               </div>
+            )}
+            <div className='pl-6'>
+              <Input
+                placeholder='Add a step'
+                title='Task steps'
+                type='step'
+                callbackFnStep={addStep}
+                taskId={id}
+              />
             </div>
-          )}
+          </div>
           {/* link */}
           {link ? (
             <LinkShow link={link} id={id} />
           ) : (
             <Input
+              type='link'
               callbackFn={deleteTask}
               placeholder='Add a link'
               title='Task link'
-              type='link'
+              taskId={id}
             />
           )}
           {/* note */}
@@ -74,25 +86,3 @@ const TaskItem = (task: Task) => {
 };
 
 export default TaskItem;
-
-//   {/* buttons */}
-//   <div className='flex items-center justify-end gap-4'>
-//   <div
-//     className={`${starOpacity} transition duration-200 hover:text-red-600 dark:hover:text-red-300`}
-//     onClick={() => setIsModalOpen(true)}
-//   >
-//     <BsTrash3 size={20} opacity={0.5} />
-//   </div>
-//   <div
-//     className={`transition duration-200 ${
-//       isImportant ? '' : starOpacity
-//     }`}
-//     onClick={() => toggleImportance(id)}
-//   >
-//     {isImportant ? (
-//       <BsStarFill size={20} color='#FDCC0D' />
-//     ) : (
-//       <BsStar size={20} opacity={0.5} />
-//     )}
-//   </div>
-// </div>

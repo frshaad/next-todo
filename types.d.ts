@@ -2,9 +2,9 @@ type Task = {
   id: string;
   title: string;
   isTaskDone: boolean;
-  isCardExpanded: boolean;
+  isCardExpanded?: boolean;
   isImportant?: boolean;
-  steps?: Step[];
+  steps: Task[];
   link?: string;
   note?: string;
   createdDate?: Date;
@@ -17,4 +17,9 @@ type Step = {
   isCardExpanded?: boolean;
   isImportant?: boolean;
   steps?: Step[];
+};
+
+type StepState = {
+  id: string;
+  title: string;
 };
