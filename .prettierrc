@@ -1,7 +1,0 @@
-{
-  "plugins": ["prettier-plugin-tailwindcss"],
-  "singleQuote": true,
-  "tabWidth": 2,
-  "jsxSingleQuote": true,
-  "arrowParens": "avoid"
-}

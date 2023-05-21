@@ -1,18 +1,19 @@
-import { create } from 'zustand';
-import { v4 as uuidv4 } from 'uuid';
+import { create } from 'zustand'
+import { v4 as uuidv4 } from 'uuid'
 
 type TaskState = {
-  tasks: Task[];
-  addTask: (title: string) => void;
-  deleteTask: (taskId: string) => void;
-  toggleTaskDone: (taskId: string) => void;
-  clearCompeletedTasks: () => void;
-  checkTasksDone: () => void;
-  toggleImportance: (taskId: string) => void;
-  toggleExpandCard: (taskId: string) => void;
-  removeLink: (taskId: string) => void;
-  addStep: (taskId: string, payload: string) => void;
-};
+  tasks: Task[]
+  addTask: (title: string) => void
+  deleteTask: (taskId: string) => void
+  toggleTaskDone: (taskId: string) => void
+  clearCompeletedTasks: () => void
+  checkTasksDone: () => void
+  toggleImportance: (taskId: string) => void
+  toggleExpandCard: (taskId: string) => void
+  removeLink: (taskId: string) => void
+  addStep: (taskId: string, payload: string) => void
+  // toggleStepDone: (taskId: string, stepId: string) => void
+}
 
 const useTasks = create<TaskState>(set => ({
   tasks: [
@@ -82,7 +83,7 @@ const useTasks = create<TaskState>(set => ({
       tasks: state.tasks.map(task =>
         task.id === taskId ? { ...task, isTaskDone: !task.isTaskDone } : task
       ),
-    }));
+    }))
   },
 
   clearCompeletedTasks: () =>
@@ -134,6 +135,20 @@ const useTasks = create<TaskState>(set => ({
           : task
       ),
     })),
-}));
 
-export default useTasks;
+  // toggleStepDone: (taskId, stepId) => {
+  //   set(state => ({
+  //     tasks: state.tasks.map(task =>
+  //       task.id === taskId
+  //         ? task.steps.map(step =>
+  //             step.id === stepId
+  //               ? { ...step, isTaskDone: !step.isTaskDone }
+  //               : step
+  //           )
+  //         : task
+  //     ),
+  //   }))
+  // },
+}))
+
+export default useTasks

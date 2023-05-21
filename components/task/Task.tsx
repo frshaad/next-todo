@@ -1,18 +1,26 @@
-import { useState } from 'react';
-import { BsStar, BsStarFill, BsTrash3 } from 'react-icons/bs';
+import { useState } from 'react'
+import { BsStar, BsStarFill, BsTrash3 } from 'react-icons/bs'
 
-import useTasks from '@/hooks/useTasks';
+import useTasks from '@/hooks/useTasks'
 
 type Props = {
-  task: Task;
-  setIsModalOpen: (arg: boolean) => void;
-  type: 'task' | 'step';
-};
+  task: Task
+  setIsModalOpen: (arg: boolean) => void
+  type: 'task' | 'step'
+}
 
 const Task = ({ type, task, setIsModalOpen }: Props) => {
-  const { toggleTaskDone, toggleImportance } = useTasks();
-  const [starOpacity, setStarOpacity] = useState<'hidden' | 'block'>('block');
-  const { id, isTaskDone, title, isImportant, steps, isCardExpanded } = task;
+  const { toggleTaskDone, toggleImportance } = useTasks()
+  const [starOpacity, setStarOpacity] = useState<'hidden' | 'block'>('block')
+  const { id, isTaskDone, title, isImportant, steps, isCardExpanded } = task
+
+  const handleCheckTask = () => {
+    if (type === 'task') {
+      toggleTaskDone(id)
+    } else if (type === 'step') {
+      // toggleStepDone(id)
+    }
+  }
 
   return (
     <div
@@ -25,7 +33,7 @@ const Task = ({ type, task, setIsModalOpen }: Props) => {
           type='checkbox'
           checked={isTaskDone}
           className='checkbox'
-          onClick={() => toggleTaskDone(id)}
+          onClick={handleCheckTask}
           readOnly
           title={isTaskDone ? 'Uncheck the task' : 'Check the task'}
         />
@@ -62,7 +70,7 @@ const Task = ({ type, task, setIsModalOpen }: Props) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Task;
+export default Task
