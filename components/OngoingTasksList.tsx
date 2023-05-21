@@ -1,16 +1,17 @@
-import { useState } from 'react';
-import { MdDoneAll } from 'react-icons/md';
+import { useState } from 'react'
+import { MdDoneAll } from 'react-icons/md'
 
-import useTasks from '@/hooks/useTasks';
-import TaskItem from './TaskItem';
-import Modal from './Modal';
+import useTasks from '@/hooks/useTasks'
+import TaskCard from './TaskCard'
+import Modal from './Modal'
 
 const OngoingTasksList = () => {
-  const { tasks, checkTasksDone } = useTasks();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const undoneTasksCount = tasks.filter(task => !task.isTaskDone).length;
+  const { tasks, checkTasksDone } = useTasks()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const modalMessage = 'Mark each task as completed?';
+  const undoneTasksCount = tasks.filter(task => !task.isTaskDone).length
+
+  const modalMessage = 'Mark each task as completed?'
 
   return (
     <section className='flex flex-col gap-2'>
@@ -22,7 +23,7 @@ const OngoingTasksList = () => {
         />
       )}
       {undoneTasksCount === 0 && (
-        <h2 className='mt-8 animate-fade-down text-center text-lg font-medium capitalize animate-normal animate-duration-200 animate-fill-both animate-once animate-ease-out dark:text-white'>
+        <h2 className='mt-8 animate-fade-down text-center text-lg font-medium capitalize animate-normal animate-duration-200 animate-fill-both animate-once animate-ease-out dark:text-white select-none'>
           😎 There is nohting to do!
         </h2>
       )}
@@ -43,19 +44,19 @@ const OngoingTasksList = () => {
           <div className='flex flex-col gap-2'>
             {tasks.map(task => {
               if (!task.isTaskDone && task.isImportant) {
-                return <TaskItem key={task.id} {...task} />;
+                return <TaskCard key={task.id} {...task} />
               }
             })}
             {tasks.map(task => {
               if (!task.isTaskDone && !task.isImportant) {
-                return <TaskItem key={task.id} {...task} />;
+                return <TaskCard key={task.id} {...task} />
               }
             })}
           </div>
         </article>
       )}
     </section>
-  );
-};
+  )
+}
 
-export default OngoingTasksList;
+export default OngoingTasksList

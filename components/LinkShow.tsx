@@ -1,5 +1,5 @@
 import useTasks from '@/hooks/useTasks';
-import { MdLink, MdLinkOff } from 'react-icons/md';
+import { MdLinkOff } from 'react-icons/md';
 
 type Props = {
   link: string;
@@ -26,8 +26,12 @@ const LinkShow = ({ link, id }: Props) => {
           rel='noopener noreferrer'
           className='flex'
         >
-          <span className='font-medium text-black'>{boldPartOfLink}</span>
-          <span className='font-light text-black/70'>{extraPartOfLink}</span>
+          <span className='font-medium text-black dark:text-white'>
+            {boldPartOfLink}
+          </span>
+          <span className='font-light text-black/70 dark:text-gray-200'>
+            {extraPartOfLink}
+          </span>
         </a>
       </div>
     </div>
