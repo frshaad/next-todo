@@ -49,7 +49,10 @@ export default function Step({ step, taskId }: StepProps) {
       </div>
 
       <div className="flex items-center justify-end gap-1">
-        <ModifierIcon Icon={BsTrash3} onClick={() => removeStep(stepId)} />
+        <ModifierIcon
+          Icon={BsTrash3}
+          onClick={() => removeStep(taskId, stepId)}
+        />
       </div>
     </div>
   )
