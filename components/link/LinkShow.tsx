@@ -16,8 +16,11 @@ export default function LinkShow({ link, id }: Props) {
 
   return (
     <div className="flex items-center gap-3 pl-6">
-      <div className="flex items-start gap-4">
-        <div onClick={() => removeLink(id)} className="translate-y-1">
+      <div className="flex items-start gap-3">
+        <div
+          onClick={() => removeLink(id)}
+          className="cursor-pointer rounded-full p-1 transition hover:scale-110 hover:bg-red-400 hover:text-white"
+        >
           <MdLinkOff size={20} />
         </div>
         <a
