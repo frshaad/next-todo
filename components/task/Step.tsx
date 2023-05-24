@@ -39,7 +39,7 @@ export default function Step({ step, taskId }: StepProps) {
         />
         <div>
           <h3
-            className={`select-none text-lg dark:text-white ${
+            className={`select-none dark:text-white ${
               isStepDone ? 'line-through' : ''
             }`}
           >

@@ -3,49 +3,50 @@ import { v4 as uuidv4 } from 'uuid'
 const initialTasks: Task[] = [
   {
     id: uuidv4(),
-    title: 'Task num 1',
-    isTaskDone: false,
-    isImportant: false,
-    steps: [
-      { id: uuidv4(), title: 'step 1.1', isStepDone: false },
-      { id: uuidv4(), title: 'step 1.2', isStepDone: true },
-      { id: uuidv4(), title: 'step 1.3', isStepDone: false }
-    ],
-    isCardExpanded: true,
-    link: 'https://open.spotify.com/search/morning/playlists',
-    note: ''
-  },
-  {
-    id: uuidv4(),
-    title: 'Task num 2',
-    isTaskDone: true,
-    isImportant: false,
-    isCardExpanded: false,
-    link: 'https://www.google.com/',
-    steps: [],
-    note: ''
-  },
-  {
-    id: uuidv4(),
-    title: 'Task num 3',
+    title: 'Purchasing supplies for the kitchen',
     isTaskDone: false,
     isImportant: true,
     steps: [
-      { id: uuidv4(), title: 'step 2.1', isStepDone: true },
-      { id: uuidv4(), title: 'step 2.2', isStepDone: false }
+      { id: uuidv4(), title: 'Milk', isStepDone: true },
+      { id: uuidv4(), title: 'Ketchup', isStepDone: true },
+      { id: uuidv4(), title: 'Bread', isStepDone: false }
     ],
     isCardExpanded: false,
-    note: 'Hello Farshad!!!',
-    link: ''
+    link: '',
+    note: 'Check the expiration date of the milk.'
   },
   {
     id: uuidv4(),
-    title: 'Task num 4',
-    isTaskDone: true,
+    title: 'Pay the bills',
+    isTaskDone: false,
+    isImportant: false,
     isCardExpanded: false,
-    steps: [],
-    note: '',
-    link: ''
+    link: '',
+    steps: [
+      { id: uuidv4(), title: 'Electricity', isStepDone: true },
+      { id: uuidv4(), title: 'Phone', isStepDone: false },
+      { id: uuidv4(), title: 'Water', isStepDone: false },
+      { id: uuidv4(), title: 'Internet', isStepDone: false }
+    ],
+    note: ''
+  },
+  {
+    id: uuidv4(),
+    title: 'Update the resume',
+    isTaskDone: true,
+    isImportant: true,
+    steps: [
+      { id: uuidv4(), title: "Add project's github repo", isStepDone: true },
+      { id: uuidv4(), title: 'Update email', isStepDone: true },
+      {
+        id: uuidv4(),
+        title: 'Put the resume in LinkedIn',
+        isStepDone: true
+      }
+    ],
+    isCardExpanded: false,
+    link: 'https://github.com/frshaad',
+    note: ''
   }
 ]
 

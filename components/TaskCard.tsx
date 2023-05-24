@@ -67,17 +67,14 @@ export default function TaskCard(task: Task) {
           {/* note */}
           <div className="flex flex-col gap-2">
             <textarea
-              className="rounded-md border p-3 text-lg font-normal outline-none dark:text-gray-50"
+              className="rounded-lg p-3 text-lg font-normal outline-none dark:text-gray-50"
               name="task-note"
               id="task-note"
-              rows={4}
+              rows={3}
               placeholder="Add a note..."
               value={note}
               onChange={(e) => addNote(id, e.target.value)}
             ></textarea>
-            <button className="w-full rounded-md bg-gray-300 p-2 text-black transition hover:bg-gray-400">
-              {note.length !== 0 ? 'Update note' : 'Add note'}
-            </button>
           </div>
 
           {/* created date */}
