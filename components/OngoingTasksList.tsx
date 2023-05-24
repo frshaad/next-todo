@@ -3,14 +3,13 @@ import { MdDoneAll } from 'react-icons/md'
 
 import useTasks from '@/hooks/useTasks'
 import TaskCard from './TaskCard'
-import Modal from './Modal'
+import Modal from './modal/Modal'
 
-const OngoingTasksList = () => {
+export default function OngoingTasksList() {
   const { tasks, checkTasksDone } = useTasks()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const undoneTasksCount = tasks.filter((task) => !task.isTaskDone).length
-
   const modalMessage = 'Mark each task as completed?'
 
   return (
@@ -58,5 +57,3 @@ const OngoingTasksList = () => {
     </section>
   )
 }
-
-export default OngoingTasksList

@@ -3,7 +3,7 @@ import { BsPlus } from 'react-icons/bs'
 
 import useTasks from '@/hooks/useTasks'
 
-const AddTaskInput = () => {
+export default function AddTaskInput() {
   const { addTask } = useTasks()
   const [value, setValue] = useState('')
 
@@ -32,5 +32,3 @@ const AddTaskInput = () => {
     </div>
   )
 }
-
-export default AddTaskInput

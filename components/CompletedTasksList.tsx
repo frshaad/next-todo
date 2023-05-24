@@ -3,9 +3,9 @@ import { MdClearAll } from 'react-icons/md'
 
 import TaskItem from './TaskCard'
 import useTasks from '@/hooks/useTasks'
-import Modal from './Modal'
+import Modal from './modal/Modal'
 
-const CompletedTasksList = () => {
+export default function CompletedTasksList() {
   const { tasks, clearCompeletedTasks } = useTasks()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -39,5 +39,3 @@ const CompletedTasksList = () => {
     </section>
   )
 }
-
-export default CompletedTasksList

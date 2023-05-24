@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
 import useTasks from '@/hooks/useTasks'
-import Modal from './Modal'
+import Modal from './modal/Modal'
 import Task from './task/Task'
 import Step from './task/Step'
-import LinkShow from './LinkShow'
+import LinkShow from './link/LinkShow'
 import Input from './input/Input'
 
-const TaskCard = (task: Task) => {
+export default function TaskCard(task: Task) {
   const { id, isTaskDone, steps, isCardExpanded, link, note } = task
   const { deleteTask, addStep, addLink, addNote } = useTasks()
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -86,5 +86,3 @@ const TaskCard = (task: Task) => {
     </div>
   )
 }
-
-export default TaskCard

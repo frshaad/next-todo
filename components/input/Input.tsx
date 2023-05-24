@@ -7,7 +7,7 @@ type InputProps = {
   fallbackFn: (taskId: string, payload: string) => void
 }
 
-const Input = ({ taskId, fallbackFn, placeholder }: InputProps) => {
+export default function Input({ taskId, fallbackFn, placeholder }: InputProps) {
   const [value, setValue] = useState('')
 
   const handleAddData = () => {
@@ -39,5 +39,3 @@ const Input = ({ taskId, fallbackFn, placeholder }: InputProps) => {
     </div>
   )
 }
-
-export default Input

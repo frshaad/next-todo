@@ -14,7 +14,7 @@ type ModifierIconProps = {
   Icon: IconType
 }
 
-const Task = ({ task, setIsModalOpen }: TaskProps) => {
+export default function Task({ task, setIsModalOpen }: TaskProps) {
   const { toggleTaskDone, toggleImportance, toggleExpandCard } = useTasks()
   const { id, isTaskDone, title, isImportant, isCardExpanded } = task
 
@@ -75,5 +75,3 @@ const Task = ({ task, setIsModalOpen }: TaskProps) => {
     </div>
   )
 }
-
-export default Task

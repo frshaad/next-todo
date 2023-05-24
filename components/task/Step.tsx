@@ -4,7 +4,7 @@ import { BsTrash3 } from 'react-icons/bs'
 import useTasks from '@/hooks/useTasks'
 
 type StepProps = {
-  step: StepState
+  step: Step
 }
 
 type ModifierIconProps = {
@@ -12,7 +12,7 @@ type ModifierIconProps = {
   Icon: IconType
 }
 
-const Step = ({ step }: StepProps) => {
+export default function Step({ step }: StepProps) {
   const { toggleStepDone, removeStep } = useTasks()
   const { id, title, isStepDone } = step
 
@@ -53,5 +53,3 @@ const Step = ({ step }: StepProps) => {
     </div>
   )
 }
-
-export default Step

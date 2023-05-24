@@ -1,8 +1,8 @@
 import useTasks from '@/hooks/useTasks'
-import TaskInput from '@/components/TaskInput'
 import OngoingTasksList from '@/components/OngoingTasksList'
 import CompletedTasksList from '@/components/CompletedTasksList'
 import Navbar from '@/components/Navbar'
+import AddTaskInput from '@/components/AddTaskInput'
 
 export default function Home() {
   const { tasks } = useTasks()
@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <div className="relative mx-auto my-10 flex w-11/12 max-w-lg flex-col gap-14">
         <Navbar />
-        <TaskInput />
+        <AddTaskInput />
         <OngoingTasksList />
         {isAnyCompletedTask && <CompletedTasksList />}
       </div>

@@ -6,7 +6,7 @@ type Props = {
   id: string
 }
 
-const LinkShow = ({ link, id }: Props) => {
+export default function LinkShow({ link, id }: Props) {
   const { removeLink } = useTasks()
 
   const unwantedParts = /((http:\/\/)|(https:\/\/)|(www.))/gim
@@ -35,5 +35,3 @@ const LinkShow = ({ link, id }: Props) => {
     </div>
   )
 }
-
-export default LinkShow
