@@ -3,13 +3,13 @@ import { useState } from 'react'
 import useTasks from '@/hooks/useTasks'
 import Modal from './modal/Modal'
 import Task from './task/Task'
-import Step from './task/Step'
-import LinkShow from './link/LinkShow'
-import Input from './input/Input'
+import Steps from './task/Steps'
+import Link from './task/Link'
+import Note from './task/Note'
 
 export default function TaskCard(task: Task) {
   const { id, isTaskDone, steps, isCardExpanded, link, note } = task
-  const { deleteTask, addStep, addLink, addNote } = useTasks()
+  const { deleteTask } = useTasks()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const modalDeleteMessage = 'Do you really want to remove this task?'
@@ -33,51 +33,9 @@ export default function TaskCard(task: Task) {
       {/* Expanded Section */}
       {isCardExpanded && (
         <div className="mt-3 flex flex-col gap-8">
-          {/* Steps */}
-          <div className="flex flex-col gap-4">
-            {steps && (
-              <div className="flex flex-col gap-3">
-                <h4 className="font-medium">Steps</h4>
-                <div className="flex flex-col gap-1 pl-6">
-                  {steps.map((step) => (
-                    <Step key={step.id} step={step} taskId={id} />
-                  ))}
-                </div>
-              </div>
-            )}
-            <div className="pl-6">
-              <Input
-                taskId={id}
-                placeholder="Add a new step"
-                fallbackFn={addStep}
-              />
-            </div>
-          </div>
-
-          {/* link */}
-          {link.length !== 0 ? (
-            <div className="flex flex-col gap-3">
-              <h4 className="font-medium">Link</h4>
-              <LinkShow link={link} id={id} />
-            </div>
-          ) : (
-            <Input taskId={id} placeholder="Add a link" fallbackFn={addLink} />
-          )}
-
-          {/* note */}
-          <div className="flex flex-col gap-2">
-            <textarea
-              className="rounded-lg p-3 text-lg font-normal outline-none dark:text-gray-50"
-              name="task-note"
-              id="task-note"
-              rows={3}
-              placeholder="Add a note..."
-              value={note}
-              onChange={(e) => addNote(id, e.target.value)}
-            ></textarea>
-          </div>
-
-          {/* created date */}
+          <Steps steps={steps} taskId={id} />
+          <Link link={link} taskId={id} />
+          <Note note={note} taskId={id} />
         </div>
       )}
     </div>
