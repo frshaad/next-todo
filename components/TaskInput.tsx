@@ -1,7 +1,7 @@
-import AddTaskInput from './input/AddTaskInput';
+import AddTaskInput from './input/AddTaskInput'
 
 const TaskInput = () => {
-  return <AddTaskInput />;
-};
+  return <AddTaskInput />
+}
 
-export default TaskInput;
+export default TaskInput

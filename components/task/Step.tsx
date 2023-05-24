@@ -1,37 +1,37 @@
-import { IconType } from 'react-icons';
-import { BsTrash3 } from 'react-icons/bs';
+import { IconType } from 'react-icons'
+import { BsTrash3 } from 'react-icons/bs'
 
-import useTasks from '@/hooks/useTasks';
+import useTasks from '@/hooks/useTasks'
 
 type StepProps = {
-  step: StepState;
-};
+  step: StepState
+}
 
 type ModifierIconProps = {
-  onClick: () => void;
-  Icon: IconType;
-};
+  onClick: () => void
+  Icon: IconType
+}
 
 const Step = ({ step }: StepProps) => {
-  const { toggleStepDone, removeStep } = useTasks();
-  const { id, title, isStepDone } = step;
+  const { toggleStepDone, removeStep } = useTasks()
+  const { id, title, isStepDone } = step
 
   const ModifierIcon = ({ onClick, Icon }: ModifierIconProps) => (
     <button
-      className='transition hover:text-red-600 dark:hover:text-red-300 hover:bg-black/10 p-2 rounded-full'
+      className="rounded-full p-2 transition hover:bg-black/10 hover:text-red-600 dark:hover:text-red-300"
       onClick={onClick}
     >
       <Icon size={18} opacity={0.5} />
     </button>
-  );
+  )
 
   return (
-    <div className='flex w-full items-center justify-between '>
-      <div className='flex items-center gap-3'>
+    <div className="flex w-full items-center justify-between ">
+      <div className="flex items-center gap-3">
         <input
-          type='checkbox'
+          type="checkbox"
           checked={isStepDone}
-          className='checkbox'
+          className="checkbox"
           onClick={() => toggleStepDone(id)}
           readOnly
           title={isStepDone ? 'Uncheck the step' : 'Check the step'}
@@ -47,14 +47,11 @@ const Step = ({ step }: StepProps) => {
         </div>
       </div>
 
-      <div className='flex items-center justify-end gap-1'>
-        <ModifierIcon
-          Icon={BsTrash3}
-          onClick={() => removeStep(id)}
-        />
+      <div className="flex items-center justify-end gap-1">
+        <ModifierIcon Icon={BsTrash3} onClick={() => removeStep(id)} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Step;
+export default Step

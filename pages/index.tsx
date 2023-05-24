@@ -1,13 +1,13 @@
-import useTasks from "@/hooks/useTasks";
-import TaskInput from "@/components/TaskInput";
-import OngoingTasksList from "@/components/OngoingTasksList";
-import CompletedTasksList from "@/components/CompletedTasksList";
-import Navbar from "@/components/Navbar";
+import useTasks from '@/hooks/useTasks'
+import TaskInput from '@/components/TaskInput'
+import OngoingTasksList from '@/components/OngoingTasksList'
+import CompletedTasksList from '@/components/CompletedTasksList'
+import Navbar from '@/components/Navbar'
 
 export default function Home() {
-  const { tasks } = useTasks();
+  const { tasks } = useTasks()
   const isAnyCompletedTask =
-    tasks.filter((task) => task.isTaskDone).length !== 0;
+    tasks.filter((task) => task.isTaskDone).length !== 0
 
   return (
     <>
@@ -18,5 +18,5 @@ export default function Home() {
         {isAnyCompletedTask && <CompletedTasksList />}
       </div>
     </>
-  );
+  )
 }

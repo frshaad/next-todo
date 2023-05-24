@@ -1,19 +1,19 @@
-import { useState } from "react";
-import { BsPlus } from "react-icons/bs";
+import { useState } from 'react'
+import { BsPlus } from 'react-icons/bs'
 
 type InputProps = {
-  taskId: string;
-  placeholder: string;
-  fallbackFn: (taskId: string, payload: string) => void;
-};
+  taskId: string
+  placeholder: string
+  fallbackFn: (taskId: string, payload: string) => void
+}
 
 const Input = ({ taskId, fallbackFn, placeholder }: InputProps) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('')
 
   const handleAddData = () => {
-    fallbackFn(taskId, value);
-    setValue("");
-  };
+    fallbackFn(taskId, value)
+    setValue('')
+  }
 
   return (
     <div className="relative">
@@ -23,8 +23,8 @@ const Input = ({ taskId, fallbackFn, placeholder }: InputProps) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            handleAddData();
+          if (e.key === 'Enter') {
+            handleAddData()
           }
         }}
         placeholder={placeholder}
@@ -37,7 +37,7 @@ const Input = ({ taskId, fallbackFn, placeholder }: InputProps) => {
         <BsPlus size={28} />
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

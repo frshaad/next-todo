@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState } from 'react'
 
-import useTasks from "@/hooks/useTasks";
-import Modal from "./Modal";
-import Task from "./task/Task";
-import Step from "./task/Step";
-import LinkShow from "./LinkShow";
-import Input from "./input/Input";
+import useTasks from '@/hooks/useTasks'
+import Modal from './Modal'
+import Task from './task/Task'
+import Step from './task/Step'
+import LinkShow from './LinkShow'
+import Input from './input/Input'
 
 const TaskCard = (task: Task) => {
-  const { id, isTaskDone, steps, isCardExpanded, link, note } = task;
-  const { deleteTask, addStep, addLink, addNote } = useTasks();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { id, isTaskDone, steps, isCardExpanded, link, note } = task
+  const { deleteTask, addStep, addLink, addNote } = useTasks()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const modalDeleteMessage = "Do you really want to remove this task?";
+  const modalDeleteMessage = 'Do you really want to remove this task?'
 
   return (
     <div
       className={`flex flex-col rounded-md border p-4 shadow-sm transition hover:shadow-md dark:border-gray-600 ${
-        isTaskDone ? "opacity-60" : ""
+        isTaskDone ? 'opacity-60' : ''
       }`}
     >
       {isModalOpen && (
@@ -67,7 +67,7 @@ const TaskCard = (task: Task) => {
           {/* note */}
           <div className="flex flex-col gap-2">
             <textarea
-              className="p-3 rounded-md font-normal text-lg dark:text-gray-50 outline-none border"
+              className="rounded-md border p-3 text-lg font-normal outline-none dark:text-gray-50"
               name="task-note"
               id="task-note"
               rows={4}
@@ -75,11 +75,8 @@ const TaskCard = (task: Task) => {
               value={note}
               onChange={(e) => addNote(id, e.target.value)}
             ></textarea>
-            <button
-              className="w-full bg-gray-300 p-2 text-black rounded-md hover:bg-gray-400 transition"
-              onClick={() => {}}
-            >
-              {note.length !== 0 ? "Update note" : "Add note"}
+            <button className="w-full rounded-md bg-gray-300 p-2 text-black transition hover:bg-gray-400">
+              {note.length !== 0 ? 'Update note' : 'Add note'}
             </button>
           </div>
 
@@ -87,7 +84,7 @@ const TaskCard = (task: Task) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default TaskCard;
+export default TaskCard
