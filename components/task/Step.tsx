@@ -5,6 +5,7 @@ import useTasks from '@/hooks/useTasks'
 
 type StepProps = {
   step: Step
+  taskId: string
 }
 
 type ModifierIconProps = {
@@ -12,9 +13,9 @@ type ModifierIconProps = {
   Icon: IconType
 }
 
-export default function Step({ step }: StepProps) {
+export default function Step({ step, taskId }: StepProps) {
   const { toggleStepDone, removeStep } = useTasks()
-  const { id, title, isStepDone } = step
+  const { id: stepId, title: stepTitle, isStepDone } = step
 
   const ModifierIcon = ({ onClick, Icon }: ModifierIconProps) => (
     <button
@@ -32,7 +33,7 @@ export default function Step({ step }: StepProps) {
           type="checkbox"
           checked={isStepDone}
           className="checkbox"
-          onClick={() => toggleStepDone(id)}
+          onClick={() => toggleStepDone(taskId, stepId)}
           readOnly
           title={isStepDone ? 'Uncheck the step' : 'Check the step'}
         />
@@ -42,13 +43,13 @@ export default function Step({ step }: StepProps) {
               isStepDone ? 'line-through' : ''
             }`}
           >
-            {title}
+            {stepTitle}
           </h3>
         </div>
       </div>
 
       <div className="flex items-center justify-end gap-1">
-        <ModifierIcon Icon={BsTrash3} onClick={() => removeStep(id)} />
+        <ModifierIcon Icon={BsTrash3} onClick={() => removeStep(stepId)} />
       </div>
     </div>
   )

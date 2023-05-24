@@ -29,7 +29,7 @@ type TasksStore = {
   addLink: (taskId: string, link: string) => void
   removeLink: (taskId: string) => void
   addStep: (taskId: string, payload: string) => void
-  toggleStepDone: (stepId: string) => void
+  toggleStepDone: (taskId: string, stepId: string) => void
   removeStep: (stepId: string) => void
   addNote: (taskId: string, payload: string) => void
 }

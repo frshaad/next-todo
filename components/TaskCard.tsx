@@ -40,7 +40,7 @@ export default function TaskCard(task: Task) {
                 <h4 className="font-medium">Steps</h4>
                 <div className="flex flex-col gap-1 pl-6">
                   {steps.map((step) => (
-                    <Step key={step.id} step={step} />
+                    <Step key={step.id} step={step} taskId={id}/>
                   ))}
                 </div>
               </div>

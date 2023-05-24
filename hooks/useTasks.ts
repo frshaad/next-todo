@@ -97,7 +97,22 @@ const useTasks = create<TasksStore>((set) => ({
       )
     })),
 
-  toggleStepDone: (stepId) => set((state) => ({})),
+  toggleStepDone: (taskId, stepId) =>
+    set((state) => ({
+      tasks: state.tasks.map((task) =>
+        task.id === taskId
+          ? {
+              ...task,
+              steps: task.steps.map((step) =>
+                step.id === stepId
+                  ? { ...step, isStepDone: !step.isStepDone }
+                  : step
+              )
+            }
+          : task
+      )
+    })),
+
   removeStep: (stepId) => set((state) => ({})),
 
   addNote: (taskId, payload) =>
