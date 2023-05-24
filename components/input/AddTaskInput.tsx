@@ -3,12 +3,11 @@ import { BsPlus } from 'react-icons/bs';
 
 import useTasks from '@/hooks/useTasks';
 
-type Props = {};
 
-const AddTaskInput = ({}: Props) => {
+
+const AddTaskInput = () => {
   const { addTask } = useTasks();
   const [value, setValue] = useState('');
-  let Icon;
 
   return (
     <div className='relative'>

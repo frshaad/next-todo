@@ -1,20 +1,20 @@
-import { IconType } from 'react-icons'
-import { BsTrash3 } from 'react-icons/bs'
+import { IconType } from 'react-icons';
+import { BsTrash3 } from 'react-icons/bs';
 
-import useTasks from '@/hooks/useTasks'
+import useTasks from '@/hooks/useTasks';
 
 type StepProps = {
-  step: StepState
-}
+  step: StepState;
+};
 
 type ModifierIconProps = {
-  onClick: () => void
-  Icon: IconType
-}
+  onClick: () => void;
+  Icon: IconType;
+};
 
 const Step = ({ step }: StepProps) => {
-  const { toggleStepDone, removeStep } = useTasks()
-  const { id, title, isStepDone } = step
+  const { toggleStepDone, removeStep } = useTasks();
+  const { id, title, isStepDone } = step;
 
   const ModifierIcon = ({ onClick, Icon }: ModifierIconProps) => (
     <button
@@ -23,7 +23,7 @@ const Step = ({ step }: StepProps) => {
     >
       <Icon size={18} opacity={0.5} />
     </button>
-  )
+  );
 
   return (
     <div className='flex w-full items-center justify-between '>
@@ -48,10 +48,13 @@ const Step = ({ step }: StepProps) => {
       </div>
 
       <div className='flex items-center justify-end gap-1'>
-        <ModifierIcon Icon={BsTrash3} onClick={() => removeStep(id)} />
+        <ModifierIcon
+          Icon={BsTrash3}
+          onClick={() => removeStep(id)}
+        />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Step
+export default Step;

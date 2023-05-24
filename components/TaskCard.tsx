@@ -1,25 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from "react";
 
-import useTasks from '@/hooks/useTasks';
-import Modal from './Modal';
-import Task from './task/Task';
-import Step from './task/Step';
-import LinkShow from './LinkShow';
-
-import Input from './input/input';
+import useTasks from "@/hooks/useTasks";
+import Modal from "./Modal";
+import Task from "./task/Task";
+import Step from "./task/Step";
+import LinkShow from "./LinkShow";
+import Input from "./input/Input";
 
 const TaskCard = (task: Task) => {
-  const { deleteTask, addStep, addLink } = useTasks();
+  const { id, isTaskDone, steps, isCardExpanded, link, note } = task;
+  const { deleteTask, addStep, addLink, addNote } = useTasks();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { id, isTaskDone, steps, isCardExpanded, link } = task;
-
-  const modalDeleteMessage = 'Do you really want to remove this task?';
+  const modalDeleteMessage = "Do you really want to remove this task?";
 
   return (
     <div
       className={`flex flex-col rounded-md border p-4 shadow-sm transition hover:shadow-md dark:border-gray-600 ${
-        isTaskDone ? 'opacity-60' : ''
+        isTaskDone ? "opacity-60" : ""
       }`}
     >
       {isModalOpen && (
@@ -34,34 +32,56 @@ const TaskCard = (task: Task) => {
 
       {/* Expanded Section */}
       {isCardExpanded && (
-        <div className='mt-3 flex flex-col gap-10'>
+        <div className="mt-3 flex flex-col gap-8">
           {/* Steps */}
-          <div className='flex flex-col gap-4'>
+          <div className="flex flex-col gap-4">
             {steps && (
-              <div className='flex flex-col gap-3'>
-                <h4 className='font-medium'>Steps</h4>
-                <div className='flex flex-col gap-1 pl-6'>
-                  {steps.map(step => (
+              <div className="flex flex-col gap-3">
+                <h4 className="font-medium">Steps</h4>
+                <div className="flex flex-col gap-1 pl-6">
+                  {steps.map((step) => (
                     <Step key={step.id} step={step} />
                   ))}
                 </div>
               </div>
             )}
-            <div className='pl-6'>
+            <div className="pl-6">
               <Input
                 taskId={id}
-                placeholder='Add a new step'
+                placeholder="Add a new step"
                 fallbackFn={addStep}
               />
             </div>
           </div>
+
           {/* link */}
-          {link ? (
-            <LinkShow link={link} id={id} />
+          {link.length !== 0 ? (
+            <div className="flex flex-col gap-3">
+              <h4 className="font-medium">Link</h4>
+              <LinkShow link={link} id={id} />
+            </div>
           ) : (
-            <Input taskId={id} placeholder='Add a link' fallbackFn={addLink} />
+            <Input taskId={id} placeholder="Add a link" fallbackFn={addLink} />
           )}
+
           {/* note */}
+          <div className="flex flex-col gap-2">
+            <textarea
+              className="p-3 rounded-md font-normal text-lg dark:text-gray-50 outline-none border"
+              name="task-note"
+              id="task-note"
+              rows={4}
+              placeholder="Add a note..."
+              value={note}
+              onChange={(e) => addNote(id, e.target.value)}
+            ></textarea>
+            <button
+              className="w-full bg-gray-300 p-2 text-black rounded-md hover:bg-gray-400 transition"
+              onClick={() => {}}
+            >
+              {note.length !== 0 ? "Update note" : "Add note"}
+            </button>
+          </div>
 
           {/* created date */}
         </div>
