@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 
-const initialTasks: Task[] = [
+const placeholderTasks: Task[] = [
   {
     id: uuidv4(),
     title: 'Purchasing supplies for the kitchen',
@@ -50,4 +50,4 @@ const initialTasks: Task[] = [
   }
 ]
 
-export default initialTasks
+export default placeholderTasks

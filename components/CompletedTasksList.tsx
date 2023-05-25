@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MdClearAll } from 'react-icons/md'
 
 import TaskItem from './TaskCard'
@@ -8,6 +8,11 @@ import Modal from './modal/Modal'
 export default function CompletedTasksList() {
   const { tasks, clearCompeletedTasks } = useTasks()
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [tasksStore, setTasksStore] = useState<Task[] | undefined>()
+
+  useEffect(() => {
+    setTasksStore(tasks)
+  }, [tasks])
 
   const modalMessage = 'Clear all completed tasks?'
 
@@ -31,7 +36,7 @@ export default function CompletedTasksList() {
           </button>
         </div>
       </div>
-      {tasks.map((task) => {
+      {tasksStore?.map((task) => {
         if (task.isTaskDone) {
           return <TaskItem key={task.id} {...task} />
         }

@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import useTasks from '@/hooks/useTasks'
 import OngoingTasksList from '@/components/OngoingTasksList'
 import CompletedTasksList from '@/components/CompletedTasksList'
@@ -6,8 +8,14 @@ import AddTaskInput from '@/components/AddTaskInput'
 
 export default function Home() {
   const { tasks } = useTasks()
+  const [tasksStore, setTasksStore] = useState<Task[] | undefined>()
+
+  useEffect(() => {
+    setTasksStore(tasks)
+  }, [tasks])
+
   const isAnyCompletedTask =
-    tasks.filter((task) => task.isTaskDone).length !== 0
+    tasksStore?.filter((task) => task.isTaskDone).length !== 0
 
   return (
     <>

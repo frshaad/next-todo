@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MdDoneAll } from 'react-icons/md'
 
 import useTasks from '@/hooks/useTasks'
@@ -8,8 +8,13 @@ import Modal from './modal/Modal'
 export default function OngoingTasksList() {
   const { tasks, checkTasksDone } = useTasks()
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [tasksStore, setTasksStore] = useState<Task[] | undefined>()
 
-  const undoneTasksCount = tasks.filter((task) => !task.isTaskDone).length
+  useEffect(() => {
+    setTasksStore(tasks)
+  }, [tasks])
+
+  const undoneTasksCount = tasksStore?.filter((task) => !task.isTaskDone).length
   const modalMessage = 'Mark each task as completed?'
 
   return (
@@ -41,12 +46,12 @@ export default function OngoingTasksList() {
             </button>
           </div>
           <div className="flex flex-col gap-2">
-            {tasks.map((task) => {
+            {tasksStore?.map((task) => {
               if (!task.isTaskDone && task.isImportant) {
                 return <TaskCard key={task.id} {...task} />
               }
             })}
-            {tasks.map((task) => {
+            {tasksStore?.map((task) => {
               if (!task.isTaskDone && !task.isImportant) {
                 return <TaskCard key={task.id} {...task} />
               }
