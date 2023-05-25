@@ -22,8 +22,8 @@ export default function Home() {
       <div className="relative mx-auto my-10 flex w-11/12 max-w-lg flex-col gap-14">
         <Navbar />
         <AddTaskInput />
-        <OngoingTasksList />
-        {isAnyCompletedTask && <CompletedTasksList />}
+        <OngoingTasksList tasks={tasksStore} />
+        {isAnyCompletedTask && <CompletedTasksList tasks={tasksStore} />}
       </div>
     </>
   )
