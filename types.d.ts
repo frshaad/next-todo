@@ -26,6 +26,7 @@ type TasksStore = {
   checkTasksDone: () => void
   toggleImportance: (taskId: string) => void
   toggleExpandCard: (taskId: string) => void
+  closeExpandedCards: () => void
   addLink: (taskId: string, link: string) => void
   removeLink: (taskId: string) => void
   addStep: (taskId: string, payload: string) => void

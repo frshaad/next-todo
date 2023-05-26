@@ -7,8 +7,12 @@ import Navbar from '@/components/Navbar'
 import AddTaskInput from '@/components/AddTaskInput'
 
 export default function Home() {
-  const { tasks } = useTasks()
+  const { tasks, closeExpandedCards } = useTasks()
   const [tasksStore, setTasksStore] = useState<Task[] | undefined>()
+
+  useEffect(() => {
+    closeExpandedCards()
+  }, [])
 
   useEffect(() => {
     setTasksStore(tasks)

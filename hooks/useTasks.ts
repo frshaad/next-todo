@@ -70,6 +70,13 @@ const useTasks = create<TasksStore>()(
           )
         }),
 
+      closeExpandedCards: () =>
+        set({
+          tasks: get().tasks.map((task) =>
+            task.isCardExpanded ? { ...task, isCardExpanded: false } : task
+          )
+        }),
+
       addLink: (taskId, newLink) =>
         set({
           tasks: get().tasks.map((task) =>
