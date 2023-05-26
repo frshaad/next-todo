@@ -15,7 +15,7 @@ export default function AddTaskInput() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => {
-          if (e.key === 'Enter') {
+          if (e.key === 'Enter' && value.length !== 0) {
             addTask(value)
             setValue('')
           }

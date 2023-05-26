@@ -11,8 +11,10 @@ export default function Input({ taskId, fallbackFn, placeholder }: InputProps) {
   const [value, setValue] = useState('')
 
   const handleAddData = () => {
-    fallbackFn(taskId, value)
-    setValue('')
+    if (value.length !== 0) {
+      fallbackFn(taskId, value)
+      setValue('')
+    }
   }
 
   return (
@@ -23,7 +25,7 @@ export default function Input({ taskId, fallbackFn, placeholder }: InputProps) {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => {
-          if (e.key === 'Enter') {
+          if (e.key === 'Enter' && value.length !== 0) {
             handleAddData()
           }
         }}
