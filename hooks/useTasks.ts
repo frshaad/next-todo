@@ -30,6 +30,13 @@ const useTasks = create<TasksStore>()(
           tasks: get().tasks.filter((task) => task.id !== taskId)
         }),
 
+      editTask: (taskId, newTitle) =>
+        set({
+          tasks: get().tasks.map((task) =>
+            task.id === taskId ? { ...task, title: newTitle } : task
+          )
+        }),
+
       toggleTaskDone: (taskId) => {
         set({
           tasks: get().tasks.map((task) =>

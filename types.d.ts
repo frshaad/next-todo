@@ -21,6 +21,7 @@ type TasksStore = {
   tasks: Task[]
   addTask: (title: string) => void
   deleteTask: (taskId: string) => void
+  editTask: (taskId: string, title: string) => void
   toggleTaskDone: (taskId: string) => void
   clearCompeletedTasks: () => void
   checkTasksDone: () => void

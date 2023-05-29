@@ -6,11 +6,13 @@ import Task from './task/Task'
 import Steps from './task/Steps'
 import Link from './task/Link'
 import Note from './task/Note'
+import EditModal from './modal/EditModal'
 
 export default function TaskCard(task: Task) {
   const { id, isTaskDone, steps, isCardExpanded, link, note } = task
   const { deleteTask } = useTasks()
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
   const modalDeleteMessage = 'Do you really want to remove this task?'
 
@@ -20,15 +22,22 @@ export default function TaskCard(task: Task) {
         isTaskDone ? 'opacity-60' : ''
       }`}
     >
-      {isModalOpen && (
+      {isDeleteModalOpen && (
         <Modal
           message={modalDeleteMessage}
           confirmFn={() => deleteTask(id)}
-          setIsModalOpen={setIsModalOpen}
+          setIsModalOpen={setIsDeleteModalOpen}
         />
       )}
+      {isEditModalOpen && (
+        <EditModal setIsEditModalOpen={setIsEditModalOpen} taskId={id} />
+      )}
 
-      <Task task={task} setIsModalOpen={setIsModalOpen} />
+      <Task
+        task={task}
+        setIsDeleteModalOpen={setIsDeleteModalOpen}
+        setIsEditModalOpen={setIsEditModalOpen}
+      />
 
       {/* Expanded Section */}
       {isCardExpanded && (

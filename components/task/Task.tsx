@@ -1,12 +1,13 @@
 import { IconType } from 'react-icons'
-import { BsStar, BsStarFill, BsTrash3 } from 'react-icons/bs'
+import { BsPencilSquare, BsStar, BsStarFill, BsTrash3 } from 'react-icons/bs'
 import { BiExpandVertical } from 'react-icons/bi'
 
 import useTasks from '@/hooks/useTasks'
 
 type TaskProps = {
   task: Task
-  setIsModalOpen: (arg: boolean) => void
+  setIsDeleteModalOpen: (arg: boolean) => void
+  setIsEditModalOpen: (arg: boolean) => void
 }
 
 type ModifierIconProps = {
@@ -14,7 +15,11 @@ type ModifierIconProps = {
   Icon: IconType
 }
 
-export default function Task({ task, setIsModalOpen }: TaskProps) {
+export default function Task({
+  task,
+  setIsDeleteModalOpen,
+  setIsEditModalOpen
+}: TaskProps) {
   const { toggleTaskDone, toggleImportance, toggleExpandCard } = useTasks()
   const { id, isTaskDone, title, isImportant, isCardExpanded } = task
 
@@ -60,7 +65,14 @@ export default function Task({ task, setIsModalOpen }: TaskProps) {
           Icon={BiExpandVertical}
           onClick={() => toggleExpandCard(id)}
         />
-        <ModifierIcon Icon={BsTrash3} onClick={() => setIsModalOpen(true)} />
+        <ModifierIcon
+          Icon={BsPencilSquare}
+          onClick={() => setIsEditModalOpen(true)}
+        />
+        <ModifierIcon
+          Icon={BsTrash3}
+          onClick={() => setIsDeleteModalOpen(true)}
+        />
         <button
           className="px-2 transition"
           onClick={() => toggleImportance(id)}

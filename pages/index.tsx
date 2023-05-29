@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative mx-auto my-10 flex w-11/12 max-w-lg flex-col gap-14">
+      <div className="relative mx-auto my-10 flex w-11/12 max-w-xl flex-col gap-14">
         <Navbar />
         <AddTaskInput />
         <OngoingTasksList tasks={tasksStore} />
