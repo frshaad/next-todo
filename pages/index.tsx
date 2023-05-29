@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
-import useTasks from '@/hooks/useTasks'
-import OngoingTasksList from '@/components/OngoingTasksList'
+import AddTaskInput from '@/components/AddTaskInput'
 import CompletedTasksList from '@/components/CompletedTasksList'
 import Navbar from '@/components/Navbar'
-import AddTaskInput from '@/components/AddTaskInput'
+import OngoingTasksList from '@/components/OngoingTasksList'
+import useTasks from '@/hooks/useTasks'
 
 export default function Home() {
   const { tasks, closeExpandedCards } = useTasks()
@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     closeExpandedCards()
-  }, [])
+  }, [closeExpandedCards])
 
   useEffect(() => {
     setTasksStore(tasks)

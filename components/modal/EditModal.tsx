@@ -1,6 +1,7 @@
-import useTasks from '@/hooks/useTasks'
 import { useEffect, useState } from 'react'
 import { BsPencilSquare } from 'react-icons/bs'
+
+import useTasks from '@/hooks/useTasks'
 
 type ModalProps = {
   taskId: string
@@ -15,7 +16,7 @@ export default function EditModal({ setIsEditModalOpen, taskId }: ModalProps) {
     const inputBox = document.getElementById('inputBox')
     setNewTitle(task ? task?.title : '')
     inputBox?.focus()
-  }, [])
+  }, [task])
 
   const [newTitle, setNewTitle] = useState('')
 

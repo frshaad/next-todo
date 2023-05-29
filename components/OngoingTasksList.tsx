@@ -2,8 +2,9 @@ import { useState } from 'react'
 import { MdDoneAll } from 'react-icons/md'
 
 import useTasks from '@/hooks/useTasks'
-import TaskCard from './TaskCard'
+
 import Modal from './modal/Modal'
+import TaskCard from './TaskCard'
 
 type Props = {
   tasks: Task[] | undefined

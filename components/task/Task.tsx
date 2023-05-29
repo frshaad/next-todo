@@ -1,6 +1,6 @@
 import { IconType } from 'react-icons'
-import { BsPencilSquare, BsStar, BsStarFill, BsTrash3 } from 'react-icons/bs'
 import { BiExpandVertical } from 'react-icons/bi'
+import { BsPencilSquare, BsStar, BsStarFill, BsTrash3 } from 'react-icons/bs'
 
 import useTasks from '@/hooks/useTasks'
 

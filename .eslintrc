@@ -1,13 +1,14 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
   "extends": [
-    "plugin:@next/next/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:tailwindcss/recommended",
     "prettier",
-    "plugin:tailwindcss/recommended"
+    "next/core-web-vitals"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -20,6 +21,9 @@
       "version": "detect"
     }
   },
-  "plugins": ["@typescript-eslint", "tailwindcss"],
-  "rules": {}
+  "plugins": ["@typescript-eslint", "tailwindcss", "simple-import-sort"],
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  }
 }

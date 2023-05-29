@@ -1,12 +1,13 @@
 import { useState } from 'react'
 
 import useTasks from '@/hooks/useTasks'
+
+import EditModal from './modal/EditModal'
 import Modal from './modal/Modal'
-import Task from './task/Task'
-import Steps from './task/Steps'
 import Link from './task/Link'
 import Note from './task/Note'
-import EditModal from './modal/EditModal'
+import Steps from './task/Steps'
+import Task from './task/Task'
 
 export default function TaskCard(task: Task) {
   const { id, isTaskDone, steps, isCardExpanded, link, note } = task

@@ -1,6 +1,7 @@
 import useTasks from '@/hooks/useTasks'
-import Step from './Step'
+
 import Input from './Input'
+import Step from './Step'
 
 type Props = {
   steps: Step[]
